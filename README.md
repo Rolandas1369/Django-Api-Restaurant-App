@@ -23,3 +23,8 @@ Requirements for implementation:</p>
     <li>Solution should be built using: Django and Python3, Django Rest Framework, SQL database of your choice (PostgreSQL, SQLite, MySQL, etc)</li>
     <li>Sufficient logging must be implemented</li>
 </ul>
+
+<h1>Urls</h1>
+path("restaurants/", RestaurantList.as_view(), name="restaurant_list"),
+path("restaurants/<int:pk>/menus/", MenuList.as_view(), name="menu_list"),
+path("restaurants/<int:pk>/menus/weekday/", WeekDayList.as_view(), name="day_list"),
