@@ -2,22 +2,22 @@ from rest_framework import serializers
 
 from .models import Restaurant
 from .models import Menu
-from .models import WeekDay
+from .models import Day
 
-class RestaurantSerializer(serializers.ModelSerializer):
+class RestaurantSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Restaurant
-        fields = '__all__'
+        fields = ('id', 'url', 'name')
 
-class MenuSerializer(serializers.ModelSerializer):
+class MenuSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Menu
-        fields = '__all__'
+        fields = ('id', 'url', 'menu', 'day', 'restaurant')
 
-class WeekDaySerializer(serializers.ModelSerializer):
+class DaySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        model = WeekDay
-        fields = '__all__'    
+        model = Day
+        fields = ('id', 'url', 'day' ,'restaurant')

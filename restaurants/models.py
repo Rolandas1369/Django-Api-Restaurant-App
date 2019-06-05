@@ -6,28 +6,21 @@ from django.contrib.auth.models import User
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=100)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    location = models.CharField(max_length=1000)
 
     def __str__(self):
         return self.name
+
+class Day(models.Model):
+    day = models.CharField(max_length=100)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.day
 
 class Menu(models.Model):
-    name = models.CharField(max_length=100)
-    components = models.CharField(max_length=1000)
+    menu = models.CharField(max_length=100)
+    day = models.ForeignKey(Day, on_delete=models.CASCADE)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
-
-class WeekDay(models.Model):
-    weekday = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.weekday
-
-class Choice(models.Model):
-    menu = models.ForeignKey(Menu, related_name='choices', on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.choice_text
+        return self.menu
