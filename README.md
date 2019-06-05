@@ -25,3 +25,4 @@ Requirements for implementation:</p>
 </ul>
 
 
+<p>Test api $: python manage.py runserver</p>
